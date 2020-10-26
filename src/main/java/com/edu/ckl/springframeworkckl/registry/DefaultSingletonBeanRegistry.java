@@ -1,5 +1,8 @@
 package com.edu.ckl.springframeworkckl.registry;
 
+import java.util.HashMap;
+import java.util.Map;
+
 /**
  * @author chenkanglin
  * @desc
@@ -9,15 +12,18 @@ package com.edu.ckl.springframeworkckl.registry;
  */
 public class DefaultSingletonBeanRegistry implements SingletonBeanRegistry {
 
+    private Map<String,Object> singletonObjects = new HashMap<>();
+
 
     @Override
     public Object getSingleton(String beanName) {
-        return null;
+        return this.singletonObjects.get(beanName);
     }
 
 
     @Override
     public void addSingleton(String beanName, Object bean) {
-
+        //TODO 可以使用双重检查锁的方式进行单例的处理
+        this.singletonObjects.put(beanName,bean);
     }
 }

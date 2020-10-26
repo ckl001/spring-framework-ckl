@@ -27,7 +27,7 @@ public interface BeanDefinitionRegistry {
      * @param
      * @return java.util.List<com.edu.ckl.springframeworkckl.ioc.BeanDefinition>
      */
-    List<BeanDefinition> getBeanDefinition();
+    List<BeanDefinition> getBeanDefinitions();
 
     /***
      * description:

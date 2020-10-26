@@ -1,6 +1,7 @@
 package com.edu.ckl.springframeworkckl.reader;
 
 import com.edu.ckl.springframeworkckl.registry.BeanDefinitionRegistry;
+import com.edu.ckl.springframeworkckl.resource.Resource;
 import com.edu.ckl.springframeworkckl.utils.DocumentUtils;
 import org.dom4j.Document;
 
@@ -27,6 +28,19 @@ public class XmlBeanDefinitionReader {
         XmlBeanDefinitionDocumentReader xmlBeanDefinitionDocumentReader = new XmlBeanDefinitionDocumentReader(beanDefinitionRegistry);
         xmlBeanDefinitionDocumentReader.registerBeanDefinitions(document.getRootElement());
 
+    }
+
+    public void loadBeanDefinitions(Resource resource) {
+        InputStream inputStream = resource.getResource();
+
+        doLoadBeanDefinitions(inputStream);
+    }
+
+    private void doLoadBeanDefinitions(InputStream inputStream) {
+        // 创建文档对象
+        Document document = DocumentUtils.getDocument(inputStream);
+        XmlBeanDefinitionDocumentReader documentReader = new XmlBeanDefinitionDocumentReader(beanDefinitionRegistry);
+        documentReader.registerBeanDefinitions(document.getRootElement());
     }
 
 }

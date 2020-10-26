@@ -18,7 +18,7 @@ public class ClasspathResource implements Resource {
 
     @Override
     public InputStream getResource() {
-        if("classpath:".equals(location)){
+        if(location.startsWith("classpath:")){
             // 去除 classpath:
             location = location.substring(10);
         }
